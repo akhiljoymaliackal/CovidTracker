@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Covid Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Novel Corona Virus Tracker Application</h1>
+        <div class="jumbotron">
+            <h1 class="display-4" th:text="${totalReportedCase}"></h1>
+            <p class="lead">Number of cases reported as of Today!</p>
+        </div>
+        <h1>Country wise data</h1>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="table-success">
+                    <th>#</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>Total Reported Cases</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="data : ${covidData}" class="table-secondary">
+                    <td th:text="${dataStat.index}"></td>
+                    <td th:text="${data.country}"></td>
+                    <td th:text="${data.state}">Capital</td>
+                    <td th:text="${data.casesCount}">0</td>
+                    <td th:text="${data.change}">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
